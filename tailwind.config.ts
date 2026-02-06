@@ -13,6 +13,10 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        display: ["Playfair Display", "Georgia", "serif"],
+        body: ["Lato", "system-ui", "sans-serif"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -56,6 +60,17 @@ export default {
           "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
+        },
+        // Brand Colors
+        brand: {
+          ivory: "hsl(var(--brand-ivory))",
+          cream: "hsl(var(--brand-cream))",
+          champagne: "hsl(var(--brand-champagne))",
+          gold: "hsl(var(--brand-gold))",
+          blush: "hsl(var(--brand-blush))",
+          rose: "hsl(var(--brand-rose))",
+          charcoal: "hsl(var(--brand-charcoal))",
+          "warm-gray": "hsl(var(--brand-warm-gray))",
         },
       },
       borderRadius: {
