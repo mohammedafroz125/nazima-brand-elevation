@@ -1,31 +1,38 @@
 import Layout from "@/components/layout/Layout";
-import heroImage from "@/assets/hero-bride.jpg";
-import lookbook1 from "@/assets/lookbook-1.jpg";
-import lookbook2 from "@/assets/lookbook-2.jpg";
-import lookbook3 from "@/assets/lookbook-3.jpg";
-import collectionBridal from "@/assets/collection-bridal.jpg";
-import collectionAbaya from "@/assets/collection-abaya.jpg";
-import product1 from "@/assets/product-1.jpg";
-import product2 from "@/assets/product-2.jpg";
-import product3 from "@/assets/product-3.jpg";
-import product4 from "@/assets/product-4.jpg";
-import product5 from "@/assets/product-5.jpg";
+
+import heroSlide1 from "@/assets/hero-slide-1.jpg";
+import heroSlide2 from "@/assets/hero-slide-2.jpg";
+import heroSlide3 from "@/assets/hero-slide-3.jpg";
+import lookbookModest1 from "@/assets/lookbook-modest-1.jpg";
+import lookbookModest2 from "@/assets/lookbook-modest-2.jpg";
+import lookbookModest3 from "@/assets/lookbook-modest-3.jpg";
+import collectionAbayas from "@/assets/collection-abayas.jpg";
+import collectionDresses from "@/assets/collection-dresses.jpg";
+import collectionOccasion from "@/assets/collection-occasion.jpg";
+import productAbaya1 from "@/assets/product-abaya-1.jpg";
+import productOccasion2 from "@/assets/product-occasion-2.jpg";
+
+interface LookbookImage {
+  image: string;
+  title: string;
+  size?: "large" | "normal";
+}
+
+const lookbookImages: LookbookImage[] = [
+  { image: heroSlide1, title: "Timeless Elegance", size: "large" },
+  { image: lookbookModest1, title: "Classic Black Abaya" },
+  { image: collectionDresses, title: "Champagne Dreams" },
+  { image: lookbookModest2, title: "Sage Serenity" },
+  { image: productAbaya1, title: "Navy Sophistication" },
+  { image: collectionOccasion, title: "Blush Romance", size: "large" },
+  { image: heroSlide2, title: "Lace Elegance" },
+  { image: lookbookModest3, title: "Ivory Grace" },
+  { image: heroSlide3, title: "Sage Collection" },
+  { image: productOccasion2, title: "Burgundy Royalty" },
+  { image: collectionAbayas, title: "Everyday Elegance" },
+];
 
 const Lookbook = () => {
-  const lookbookImages = [
-    { image: heroImage, title: "Bridal Elegance" },
-    { image: lookbook1, title: "Pashmina Dreams" },
-    { image: lookbook2, title: "Festive Glamour" },
-    { image: lookbook3, title: "Printed Grace" },
-    { image: collectionBridal, title: "Velvet Royalty" },
-    { image: collectionAbaya, title: "Navy Sophistication" },
-    { image: product1, title: "Coral Charm" },
-    { image: product2, title: "Black Elegance" },
-    { image: product3, title: "Everyday Grace" },
-    { image: product4, title: "Sage Serenity" },
-    { image: product5, title: "Royal Heritage" },
-  ];
-
   return (
     <Layout>
       {/* Hero */}
@@ -36,7 +43,7 @@ const Lookbook = () => {
             <h1 className="heading-display mb-6">Lookbook</h1>
             <p className="text-body">
               Explore our curated visual gallery showcasing the elegance and
-              craftsmanship of StyledByNazima collections.
+              craftsmanship of StyledByNazima modest fashion collections.
             </p>
           </div>
         </div>
@@ -49,13 +56,13 @@ const Lookbook = () => {
             {lookbookImages.map((item, index) => (
               <div
                 key={index}
-                className={`group image-zoom relative ${
-                  index === 0 || index === 5 ? "md:col-span-2 md:row-span-2" : ""
+                className={`group relative overflow-hidden ${
+                  item.size === "large" ? "md:col-span-2 md:row-span-2" : ""
                 }`}
               >
                 <div
                   className={`overflow-hidden ${
-                    index === 0 || index === 5 ? "aspect-square" : "aspect-[3/4]"
+                    item.size === "large" ? "aspect-square" : "aspect-[3/4]"
                   }`}
                 >
                   <img
@@ -83,16 +90,16 @@ const Lookbook = () => {
             <span className="text-caption mb-4 block">Stay Connected</span>
             <h2 className="heading-section mb-6">Follow Our Journey</h2>
             <p className="text-body max-w-xl mx-auto mb-8">
-              Get daily inspiration and be the first to know about new arrivals by
-              following us on Instagram.
+              Get daily inspiration and be the first to know about new arrivals 
+              by following us on Instagram.
             </p>
             <a
-              href="https://instagram.com/itsafrozmirza"
+              href="https://instagram.com/styledbynazima"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-hero"
             >
-              @itsafrozmirza
+              @styledbynazima
             </a>
           </div>
         </div>

@@ -16,8 +16,8 @@ const Footer = () => {
               </span>
             </Link>
             <p className="mt-4 text-sm text-brand-warm-gray leading-relaxed">
-              Premium Hyderabadi & Pakistani ethnic wear, crafted with love and
-              tradition. Where elegance meets modest fashion.
+              Premium modest fashion for the modern Muslim woman. Abayas, modest 
+              dresses, hijabs, and occasion wear crafted with elegance and care.
             </p>
           </div>
 
@@ -90,13 +90,13 @@ const Footer = () => {
               Follow Us
             </h4>
             <a
-              href="https://instagram.com/itsafrozmirza"
+              href="https://instagram.com/styledbynazima"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 text-sm text-brand-warm-gray hover:text-brand-gold transition-colors"
             >
               <Instagram size={20} className="text-brand-gold" />
-              @itsafrozmirza
+              @styledbynazima
             </a>
             <div className="mt-8">
               <a

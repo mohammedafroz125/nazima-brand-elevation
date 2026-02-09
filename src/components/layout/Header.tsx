@@ -27,7 +27,7 @@ const Header = () => {
               StyledByNazima
             </span>
             <span className="text-xs tracking-[0.3em] text-brand-gold uppercase mt-0.5 hidden sm:block">
-              Where Tradition Meets Elegance
+              Premium Modest Fashion
             </span>
           </Link>
 
@@ -47,7 +47,7 @@ const Header = () => {
           {/* Desktop Social Icons */}
           <div className="hidden lg:flex items-center gap-4">
             <a
-              href="https://instagram.com/itsafrozmirza"
+              href="https://instagram.com/styledbynazima"
               target="_blank"
               rel="noopener noreferrer"
               className="text-brand-charcoal/70 hover:text-brand-gold transition-colors"
@@ -92,7 +92,7 @@ const Header = () => {
               ))}
               <div className="flex items-center gap-4 pt-4 border-t border-border/50">
                 <a
-                  href="https://instagram.com/itsafrozmirza"
+                  href="https://instagram.com/styledbynazima"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-brand-charcoal/70 hover:text-brand-gold transition-colors"
