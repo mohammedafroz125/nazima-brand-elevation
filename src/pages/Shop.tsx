@@ -1,114 +1,105 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
-import collectionBridal from "@/assets/collection-bridal.jpg";
-import collectionAbaya from "@/assets/collection-abaya.jpg";
-import collectionScarfs from "@/assets/collection-scarfs.jpg";
-import product1 from "@/assets/product-1.jpg";
-import product2 from "@/assets/product-2.jpg";
-import product3 from "@/assets/product-3.jpg";
-import product4 from "@/assets/product-4.jpg";
-import product5 from "@/assets/product-5.jpg";
-import lookbook1 from "@/assets/lookbook-1.jpg";
 
-type Category = "all" | "ethnic" | "abayas" | "scarfs";
+import productAbaya1 from "@/assets/product-abaya-1.jpg";
+import productAbaya2 from "@/assets/product-abaya-2.jpg";
+import productDress1 from "@/assets/product-dress-1.jpg";
+import productDress2 from "@/assets/product-dress-2.jpg";
+import productHijab1 from "@/assets/product-hijab-1.jpg";
+import productOccasion1 from "@/assets/product-occasion-1.jpg";
+import productOccasion2 from "@/assets/product-occasion-2.jpg";
+import collectionHijabs from "@/assets/collection-hijabs.jpg";
 
 interface Product {
-  id: number;
+  id: string;
   name: string;
-  category: Category;
   price: string;
   image: string;
-  isNew?: boolean;
-  isBestSeller?: boolean;
+  category: string;
+  tag?: string;
 }
 
+const products: Product[] = [
+  {
+    id: "1",
+    name: "Navy Embroidered Abaya",
+    price: "₹8,999",
+    image: productAbaya1,
+    category: "abayas",
+    tag: "Best Seller",
+  },
+  {
+    id: "2",
+    name: "Ivory Lace Abaya",
+    price: "₹7,499",
+    image: productAbaya2,
+    category: "abayas",
+    tag: "New Arrival",
+  },
+  {
+    id: "3",
+    name: "Sage Embroidered Dress",
+    price: "₹6,999",
+    image: productDress1,
+    category: "dresses",
+  },
+  {
+    id: "4",
+    name: "Dusty Rose Maxi Dress",
+    price: "₹5,999",
+    image: productDress2,
+    category: "dresses",
+    tag: "New Arrival",
+  },
+  {
+    id: "5",
+    name: "Champagne Silk Hijab",
+    price: "₹1,499",
+    image: productHijab1,
+    category: "hijabs",
+  },
+  {
+    id: "6",
+    name: "Premium Hijab Collection",
+    price: "₹2,999",
+    image: collectionHijabs,
+    category: "hijabs",
+    tag: "Best Seller",
+  },
+  {
+    id: "7",
+    name: "Blush Pearl Occasion Gown",
+    price: "₹12,999",
+    image: productOccasion1,
+    category: "occasion",
+    tag: "Premium",
+  },
+  {
+    id: "8",
+    name: "Burgundy Embroidered Kaftan",
+    price: "₹14,999",
+    image: productOccasion2,
+    category: "occasion",
+    tag: "Exclusive",
+  },
+];
+
+const categories = [
+  { id: "all", label: "All" },
+  { id: "abayas", label: "Abayas" },
+  { id: "dresses", label: "Modest Dresses" },
+  { id: "hijabs", label: "Hijabs & Scarves" },
+  { id: "occasion", label: "Occasion Wear" },
+];
+
 const Shop = () => {
-  const [activeCategory, setActiveCategory] = useState<Category>("all");
-
-  const categories: { key: Category; label: string }[] = [
-    { key: "all", label: "All" },
-    { key: "ethnic", label: "Ethnic Wear" },
-    { key: "abayas", label: "Abayas" },
-    { key: "scarfs", label: "Scarfs & Hijabs" },
-  ];
-
-  const products: Product[] = [
-    {
-      id: 1,
-      name: "Burgundy Velvet Anarkali",
-      category: "ethnic",
-      price: "₹8,999",
-      image: collectionBridal,
-      isNew: true,
-    },
-    {
-      id: 2,
-      name: "Navy Blue Classic Abaya",
-      category: "abayas",
-      price: "₹4,999",
-      image: collectionAbaya,
-      isBestSeller: true,
-    },
-    {
-      id: 3,
-      name: "Pastel Silk Scarf Set",
-      category: "scarfs",
-      price: "₹1,499",
-      image: collectionScarfs,
-      isNew: true,
-    },
-    {
-      id: 4,
-      name: "Coral Gold Embroidered Suit",
-      category: "ethnic",
-      price: "₹7,499",
-      image: product1,
-      isBestSeller: true,
-    },
-    {
-      id: 5,
-      name: "Black Embroidered Abaya",
-      category: "abayas",
-      price: "₹5,999",
-      image: product2,
-    },
-    {
-      id: 6,
-      name: "Ivory Pink Kurta Set",
-      category: "ethnic",
-      price: "₹4,499",
-      image: product3,
-      isNew: true,
-    },
-    {
-      id: 7,
-      name: "Sage Green Flowing Abaya",
-      category: "abayas",
-      price: "₹5,499",
-      image: product4,
-    },
-    {
-      id: 8,
-      name: "Royal Blue Silk Saree",
-      category: "ethnic",
-      price: "₹12,999",
-      image: product5,
-      isBestSeller: true,
-    },
-    {
-      id: 9,
-      name: "Dusty Rose Pashmina Hijab",
-      category: "scarfs",
-      price: "₹999",
-      image: lookbook1,
-    },
-  ];
+  const [activeCategory, setActiveCategory] = useState("all");
 
   const filteredProducts =
     activeCategory === "all"
       ? products
-      : products.filter((p) => p.category === activeCategory);
+      : products.filter((product) => product.category === activeCategory);
 
   return (
     <Layout>
@@ -116,78 +107,88 @@ const Shop = () => {
       <section className="bg-brand-cream py-16 md:py-24">
         <div className="section-container">
           <div className="max-w-2xl mx-auto text-center">
-            <span className="text-caption mb-4 block">Our Collection</span>
-            <h1 className="heading-display mb-6">Shop Premium Ethnic Wear</h1>
+            <span className="text-caption mb-4 block">Our Collections</span>
+            <h1 className="heading-display mb-6">Shop</h1>
             <p className="text-body">
-              Discover our curated selection of handcrafted ethnic wear, elegant
-              abayas, and luxurious scarfs.
+              Discover our curated selection of premium modest fashion, 
+              from elegant abayas to luxurious occasion wear.
             </p>
           </div>
         </div>
       </section>
 
       {/* Filters */}
-      <section className="sticky top-20 md:top-24 z-40 bg-background border-b border-border py-4">
+      <section className="py-8 bg-background border-b border-border/50">
         <div className="section-container">
-          <div className="flex flex-wrap justify-center gap-4">
-            {categories.map((cat) => (
+          <div className="flex flex-wrap justify-center gap-2 md:gap-4">
+            {categories.map((category) => (
               <button
-                key={cat.key}
-                onClick={() => setActiveCategory(cat.key)}
-                className={`px-6 py-2 text-sm font-body uppercase tracking-wider transition-all duration-300 ${
-                  activeCategory === cat.key
+                key={category.id}
+                onClick={() => setActiveCategory(category.id)}
+                className={`px-6 py-3 font-body text-sm uppercase tracking-wide transition-all duration-300 ${
+                  activeCategory === category.id
                     ? "bg-brand-charcoal text-brand-ivory"
-                    : "bg-secondary text-brand-charcoal hover:bg-brand-champagne/20"
+                    : "bg-transparent text-brand-charcoal border border-brand-charcoal/20 hover:border-brand-charcoal/50"
                 }`}
               >
-                {cat.label}
+                {category.label}
               </button>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Products Grid */}
+      {/* Product Grid */}
       <section className="section-padding bg-background">
         <div className="section-container">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
             {filteredProducts.map((product) => (
               <Link
                 key={product.id}
-                to={`/shop/${product.id}`}
-                className="group card-luxury"
+                to={`/shop?product=${product.id}`}
+                className="group"
               >
-                <div className="relative image-zoom aspect-[3/4]">
+                <div className="relative aspect-[3/4] overflow-hidden mb-4">
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  {/* Tags */}
-                  <div className="absolute top-4 left-4 flex flex-col gap-2">
-                    {product.isNew && <span className="badge-new">New Arrival</span>}
-                    {product.isBestSeller && (
-                      <span className="badge-premium">Best Seller</span>
-                    )}
-                  </div>
+                  {product.tag && (
+                    <span className="absolute top-4 left-4 bg-brand-charcoal text-brand-ivory px-3 py-1 text-xs font-body uppercase tracking-wide">
+                      {product.tag}
+                    </span>
+                  )}
+                  
                   {/* Quick View Overlay */}
-                  <div className="absolute inset-0 bg-brand-charcoal/0 group-hover:bg-brand-charcoal/20 transition-all duration-300 flex items-center justify-center">
-                    <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-background px-6 py-3 text-sm font-body uppercase tracking-wider text-brand-charcoal">
+                  <div className="absolute inset-0 bg-brand-charcoal/0 group-hover:bg-brand-charcoal/20 transition-all duration-500 flex items-center justify-center">
+                    <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-brand-ivory text-brand-charcoal px-6 py-3 font-body text-sm uppercase tracking-wide">
                       View Details
                     </span>
                   </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="font-display text-lg text-brand-charcoal mb-2 group-hover:text-brand-gold transition-colors">
+                <div>
+                  <span className="text-xs text-brand-warm-gray font-body uppercase tracking-wide">
+                    {categories.find((c) => c.id === product.category)?.label}
+                  </span>
+                  <h3 className="font-display text-lg text-brand-charcoal mt-1 mb-2 group-hover:text-brand-gold transition-colors duration-300">
                     {product.name}
                   </h3>
-                  <p className="font-body text-brand-gold font-medium">
+                  <p className="font-body text-brand-charcoal font-medium">
                     {product.price}
                   </p>
                 </div>
               </Link>
             ))}
           </div>
+
+          {filteredProducts.length === 0 && (
+            <div className="text-center py-16">
+              <p className="text-body">
+                No products found in this category.
+              </p>
+            </div>
+          )}
         </div>
       </section>
 

@@ -121,12 +121,12 @@ const Contact = () => {
                       Follow Us
                     </h3>
                     <a
-                      href="https://instagram.com/itsafrozmirza"
+                      href="https://instagram.com/styledbynazima"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-sm text-brand-warm-gray hover:text-brand-gold transition-colors"
                     >
-                      @itsafrozmirza
+                      @styledbynazima
                     </a>
                   </div>
                 </div>
