@@ -6,32 +6,44 @@ import { motion, AnimatePresence } from "framer-motion";
 import heroSlide1 from "@/assets/hero-slide-1.jpg";
 import heroSlide2 from "@/assets/hero-slide-2.jpg";
 import heroSlide3 from "@/assets/hero-slide-3.jpg";
+import heroSlide4 from "@/assets/hero-slide-4.jpg";
 
 interface Slide {
   image: string;
-  tagline: string;
+  category: string;
   title: string;
   subtitle: string;
+  link: string;
 }
 
 const slides: Slide[] = [
   {
     image: heroSlide1,
-    tagline: "New Collection 2026",
-    title: "Timeless Elegance",
-    subtitle: "Premium abayas crafted with love and tradition",
+    category: "Luxury Abayas",
+    title: "Grace in Every Layer",
+    subtitle: "Flowing silhouettes crafted in champagne and ivory",
+    link: "/shop?category=abayas",
   },
   {
     image: heroSlide2,
-    tagline: "Modest Luxury",
-    title: "Grace & Modesty",
-    subtitle: "Exquisite modest dresses for every occasion",
+    category: "Jilbab & Makhna",
+    title: "Modest by Nature",
+    subtitle: "Timeless jilbab sets in earth tones for everyday elegance",
+    link: "/shop?category=jilbab",
   },
   {
     image: heroSlide3,
-    tagline: "Signature Collection",
-    title: "Refined Beauty",
-    subtitle: "Where tradition meets contemporary elegance",
+    category: "Prayer Wear & Khimar",
+    title: "Serenity in Simplicity",
+    subtitle: "Pure and peaceful prayer wear for sacred moments",
+    link: "/shop?category=khimar",
+  },
+  {
+    image: heroSlide4,
+    category: "Everyday Modest",
+    title: "Effortless Beauty",
+    subtitle: "Soft pastels and feminine cuts for daily wear",
+    link: "/shop?category=dresses",
   },
 ];
 
@@ -60,57 +72,54 @@ const HeroSlider = () => {
   }, [isAutoPlaying, nextSlide]);
 
   return (
-    <section className="relative h-[180vh] md:h-[150vh] lg:h-[180vh] overflow-hidden">
-      {/* Slides */}
+    <section className="relative h-[200vh] md:h-[180vh] lg:h-[200vh] overflow-hidden">
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 1.2, ease: "easeInOut" }}
+          transition={{ duration: 1.4, ease: "easeInOut" }}
           className="absolute inset-0"
         >
-          {/* Background Image */}
           <div className="absolute inset-0">
             <img
               src={slides[currentSlide].image}
               alt={slides[currentSlide].title}
               className="w-full h-full object-cover object-top"
             />
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-brand-charcoal/60 via-brand-charcoal/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-brand-charcoal/60 via-brand-charcoal/25 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-brand-charcoal/40 via-transparent to-transparent" />
           </div>
 
-          {/* Content */}
           <div className="relative h-full flex items-center">
             <div className="section-container">
               <motion.div
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
+                transition={{ duration: 0.9, delay: 0.4 }}
                 className="max-w-2xl text-brand-ivory"
               >
-                <span className="inline-block text-xs md:text-sm tracking-[0.3em] uppercase text-brand-champagne mb-4 md:mb-6">
-                  {slides[currentSlide].tagline}
+                <span className="inline-block text-xs md:text-sm tracking-[0.35em] uppercase text-brand-champagne mb-4 md:mb-6 font-body">
+                  {slides[currentSlide].category}
                 </span>
-                <h1 className="font-display text-5xl md:text-7xl lg:text-8xl mb-4 md:mb-6 leading-[1.1]">
+                <h1 className="font-display text-5xl md:text-7xl lg:text-8xl mb-4 md:mb-6 leading-[1.05] font-medium">
                   {slides[currentSlide].title}
                 </h1>
-                <p className="font-body text-lg md:text-xl text-brand-ivory/80 mb-8 md:mb-10 max-w-lg">
+                <p className="font-body text-lg md:text-xl text-brand-ivory/80 mb-8 md:mb-10 max-w-lg leading-relaxed">
                   {slides[currentSlide].subtitle}
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <Link
-                    to="/shop"
+                    to={slides[currentSlide].link}
                     className="inline-flex items-center gap-3 px-8 py-4 bg-brand-ivory text-brand-charcoal font-body font-medium tracking-wide uppercase text-sm transition-all duration-500 hover:bg-brand-champagne"
                   >
-                    Shop Collection
+                    Shop This Collection
                     <ArrowRight size={18} />
                   </Link>
                   <Link
                     to="/lookbook"
-                    className="inline-flex items-center gap-3 px-8 py-4 border border-brand-ivory/50 text-brand-ivory font-body font-medium tracking-wide uppercase text-sm transition-all duration-500 hover:bg-brand-ivory/10"
+                    className="inline-flex items-center gap-3 px-8 py-4 border border-brand-ivory/40 text-brand-ivory font-body font-medium tracking-wide uppercase text-sm transition-all duration-500 hover:bg-brand-ivory/10 hover:border-brand-ivory/70"
                   >
                     View Lookbook
                   </Link>
@@ -160,7 +169,7 @@ const HeroSlider = () => {
         transition={{ delay: 1.5 }}
         className="absolute bottom-24 md:bottom-28 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-brand-ivory/60"
       >
-        <span className="text-xs tracking-[0.2em] uppercase">Scroll</span>
+        <span className="text-xs tracking-[0.2em] uppercase font-body">Scroll</span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
