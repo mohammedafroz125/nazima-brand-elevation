@@ -1,3 +1,4 @@
+import { useState, useCallback } from "react";
 import Layout from "@/components/layout/Layout";
 import HeroSlider from "@/components/home/HeroSlider";
 import TrustBadges from "@/components/home/TrustBadges";
@@ -7,19 +8,31 @@ import FeaturedProducts from "@/components/home/FeaturedProducts";
 import AboutPreview from "@/components/home/AboutPreview";
 import Testimonials from "@/components/home/Testimonials";
 import CTASection from "@/components/home/CTASection";
+import SplashScreen from "@/components/ui/SplashScreen";
 
 const Index = () => {
+  const [showSplash, setShowSplash] = useState(() => {
+    if (sessionStorage.getItem("sbn_visited")) return false;
+    sessionStorage.setItem("sbn_visited", "1");
+    return true;
+  });
+
+  const handleSplashComplete = useCallback(() => setShowSplash(false), []);
+
   return (
-    <Layout>
-      <HeroSlider />
-      <TrustBadges />
-      <CollectionsGrid />
-      <FeaturedProducts />
-      <BrandValues />
-      <AboutPreview />
-      <Testimonials />
-      <CTASection />
-    </Layout>
+    <>
+      {showSplash && <SplashScreen onComplete={handleSplashComplete} />}
+      <Layout>
+        <HeroSlider />
+        <TrustBadges />
+        <CollectionsGrid />
+        <FeaturedProducts />
+        <BrandValues />
+        <AboutPreview />
+        <Testimonials />
+        <CTASection />
+      </Layout>
+    </>
   );
 };
 
