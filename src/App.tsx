@@ -13,6 +13,8 @@ import Reviews from "./pages/Reviews";
 import Contact from "./pages/Contact";
 import SizeGuide from "./pages/SizeGuide";
 import NotFound from "./pages/NotFound";
+import Checkout from "./pages/Checkout";
+import ThankYou from "./pages/ThankYou";
 
 const queryClient = new QueryClient();
 
@@ -45,6 +47,8 @@ const App = () => (
             <Route path="/about" element={<About />} />
             <Route path="/reviews" element={<Reviews />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/thank-you" element={<ThankYou />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

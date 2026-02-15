@@ -327,6 +327,12 @@ const ProductDetail = () => {
               >
                 Order via WhatsApp
               </a>
+              <Link
+                to="/checkout"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-brand-charcoal text-brand-charcoal font-body font-medium tracking-wide uppercase text-sm bg-transparent transition-all duration-300 ease-out hover:bg-brand-charcoal hover:text-brand-ivory w-full text-center"
+              >
+                Proceed to Payment
+              </Link>
 
               {/* Trust Icons */}
               <div className="grid grid-cols-2 gap-3 mt-6 pt-6 border-t border-border/30">
