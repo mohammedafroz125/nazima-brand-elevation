@@ -102,7 +102,7 @@ const Shop = () => {
         <div className="section-container">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
             {filteredProducts.map((product) => (
-              <Link key={product.id} to={`/shop?product=${product.id}`} className="group">
+              <Link key={product.id} to={`/product/${product.id}`} className="group">
                 <div className="relative aspect-[3/4] overflow-hidden mb-4">
                   <img
                     src={product.image}

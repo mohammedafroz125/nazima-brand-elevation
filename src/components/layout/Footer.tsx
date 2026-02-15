@@ -51,6 +51,12 @@ const Footer = () => {
               >
                 Customer Reviews
               </Link>
+              <Link
+                to="/size-guide"
+                className="text-sm text-brand-warm-gray hover:text-brand-gold transition-colors"
+              >
+                Size Guide
+              </Link>
             </nav>
           </div>
 

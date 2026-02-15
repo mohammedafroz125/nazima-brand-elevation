@@ -6,10 +6,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import Index from "./pages/Index";
 import Shop from "./pages/Shop";
+import ProductDetail from "./pages/ProductDetail";
 import Lookbook from "./pages/Lookbook";
 import About from "./pages/About";
 import Reviews from "./pages/Reviews";
 import Contact from "./pages/Contact";
+import SizeGuide from "./pages/SizeGuide";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -37,7 +39,9 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/shop" element={<Shop />} />
+            <Route path="/product/:id" element={<ProductDetail />} />
             <Route path="/lookbook" element={<Lookbook />} />
+            <Route path="/size-guide" element={<SizeGuide />} />
             <Route path="/about" element={<About />} />
             <Route path="/reviews" element={<Reviews />} />
             <Route path="/contact" element={<Contact />} />

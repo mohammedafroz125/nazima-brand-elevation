@@ -1,5 +1,6 @@
 import Layout from "@/components/layout/Layout";
 import HeroSlider from "@/components/home/HeroSlider";
+import TrustBadges from "@/components/home/TrustBadges";
 import CollectionsGrid from "@/components/home/CollectionsGrid";
 import BrandValues from "@/components/home/BrandValues";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
@@ -11,6 +12,7 @@ const Index = () => {
   return (
     <Layout>
       <HeroSlider />
+      <TrustBadges />
       <CollectionsGrid />
       <FeaturedProducts />
       <BrandValues />
