@@ -12,21 +12,21 @@ const testimonials: Testimonial[] = [
   {
     quote:
       "The quality of the abayas is exceptional. I've never felt so elegant and comfortable at the same time. JazakAllah khair for such beautiful pieces!",
-    author: "Fatima Ahmed",
-    location: "Dubai, UAE",
-    rating: 5,
-  },
-  {
-    quote:
-      "StyledByNazima understands what modest fashion should be. The fabrics are premium, the designs are timeless, and the fit is perfect.",
-    author: "Aisha Rahman",
+    author: "Salma Afreen",
     location: "Hyderabad, India",
     rating: 5,
   },
   {
     quote:
+      "StyledByNazima understands what modest fashion should be. The fabrics are premium, the designs are timeless, and the fit is perfect.",
+    author: "Fatima Begum",
+    location: "Dubai, UAE",
+    rating: 5,
+  },
+  {
+    quote:
       "I wore the blush occasion gown to my sister's wedding and received so many compliments. It's my go-to brand for special occasions now.",
-    author: "Mariam Khan",
+    author: "Afreen Khan",
     location: "London, UK",
     rating: 5,
   },

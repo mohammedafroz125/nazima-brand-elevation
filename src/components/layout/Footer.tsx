@@ -27,35 +27,29 @@ const Footer = () => {
               Quick Links
             </h4>
             <nav className="flex flex-col gap-3">
-              <Link
-                to="/shop"
-                className="text-sm text-brand-warm-gray hover:text-brand-gold transition-colors"
-              >
+              <Link to="/shop" className="text-sm text-brand-warm-gray hover:text-brand-gold transition-colors">
                 Shop Collection
               </Link>
-              <Link
-                to="/lookbook"
-                className="text-sm text-brand-warm-gray hover:text-brand-gold transition-colors"
-              >
+              <Link to="/lookbook" className="text-sm text-brand-warm-gray hover:text-brand-gold transition-colors">
                 Lookbook
               </Link>
-              <Link
-                to="/about"
-                className="text-sm text-brand-warm-gray hover:text-brand-gold transition-colors"
-              >
+              <Link to="/about" className="text-sm text-brand-warm-gray hover:text-brand-gold transition-colors">
                 Our Story
               </Link>
-              <Link
-                to="/reviews"
-                className="text-sm text-brand-warm-gray hover:text-brand-gold transition-colors"
-              >
+              <Link to="/reviews" className="text-sm text-brand-warm-gray hover:text-brand-gold transition-colors">
                 Customer Reviews
               </Link>
-              <Link
-                to="/size-guide"
-                className="text-sm text-brand-warm-gray hover:text-brand-gold transition-colors"
-              >
+              <Link to="/size-guide" className="text-sm text-brand-warm-gray hover:text-brand-gold transition-colors">
                 Size Guide
+              </Link>
+              <Link to="/fabric-care" className="text-sm text-brand-warm-gray hover:text-brand-gold transition-colors">
+                Fabric Care
+              </Link>
+              <Link to="/faq" className="text-sm text-brand-warm-gray hover:text-brand-gold transition-colors">
+                FAQ
+              </Link>
+              <Link to="/return-policy" className="text-sm text-brand-warm-gray hover:text-brand-gold transition-colors">
+                Return Policy
               </Link>
             </nav>
           </div>
