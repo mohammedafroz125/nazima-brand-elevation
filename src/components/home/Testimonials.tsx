@@ -62,13 +62,20 @@ const Testimonials = () => {
                 "{testimonial.quote}"
               </blockquote>
               
-              <div>
-                <cite className="text-sm font-body font-medium text-brand-charcoal not-italic block">
-                  {testimonial.author}
-                </cite>
-                <span className="text-xs font-body text-brand-warm-gray">
-                  {testimonial.location}
-                </span>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-brand-gold/20 border border-brand-gold/30 flex items-center justify-center flex-shrink-0">
+                  <span className="font-display text-sm text-brand-gold font-medium">
+                    {testimonial.author.split(" ").map(n => n[0]).join("")}
+                  </span>
+                </div>
+                <div>
+                  <cite className="text-sm font-body font-medium text-brand-charcoal not-italic block">
+                    {testimonial.author}
+                  </cite>
+                  <span className="text-xs font-body text-brand-warm-gray">
+                    {testimonial.location}
+                  </span>
+                </div>
               </div>
             </div>
           ))}
