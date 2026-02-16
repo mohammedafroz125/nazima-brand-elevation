@@ -118,13 +118,20 @@ const Reviews = () => {
                 </blockquote>
 
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                  <div>
-                    <cite className="text-sm font-body font-medium text-brand-charcoal not-italic block">
-                      {review.author}
-                    </cite>
-                    <span className="text-xs font-body text-brand-warm-gray">
-                      {review.location}
-                    </span>
+                  <div className="flex items-center gap-3">
+                    <div className="w-11 h-11 rounded-full bg-brand-gold/20 border border-brand-gold/30 flex items-center justify-center flex-shrink-0">
+                      <span className="font-display text-sm text-brand-gold font-medium">
+                        {review.author.split(" ").map(n => n[0]).join("")}
+                      </span>
+                    </div>
+                    <div>
+                      <cite className="text-sm font-body font-medium text-brand-charcoal not-italic block">
+                        {review.author}
+                      </cite>
+                      <span className="text-xs font-body text-brand-warm-gray">
+                        {review.location}
+                      </span>
+                    </div>
                   </div>
                   {review.product && (
                     <span className="text-xs font-body text-brand-gold uppercase tracking-wide">
