@@ -99,20 +99,62 @@ const About = () => {
         </div>
       </section>
 
-      {/* Craftsmanship */}
+      {/* About the Designer */}
       <section className="section-padding bg-background">
+        <div className="section-container">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div className="order-2 lg:order-1">
+              <span className="text-caption mb-4 block">The Designer</span>
+              <h2 className="heading-section mb-6">Meet Nazima</h2>
+              <p className="text-body mb-4">
+                Growing up in Hyderabad, Nazima was surrounded by the rich
+                textile traditions of the Deccan. She watched her grandmother
+                drape dupattas with effortless grace and knew that modest fashion
+                could be both deeply personal and breathtakingly beautiful.
+              </p>
+              <p className="text-body mb-4">
+                "I started StyledByNazima because I couldn't find abayas that
+                felt like <em>me</em> — elegant enough for special occasions,
+                comfortable enough for everyday, and always aligned with my
+                values as a Muslim woman."
+              </p>
+              <p className="text-body">
+                Today, every piece in our collection carries Nazima's personal
+                touch — from hand-selecting fabrics in markets across
+                Hyderabad and Dubai, to perfecting each silhouette until it
+                feels like it was made just for you.
+              </p>
+            </div>
+            <div className="order-1 lg:order-2 relative">
+              <img
+                src={lookbookModest2}
+                alt="Nazima, founder of StyledByNazima"
+                className="w-full aspect-[3/4] object-cover"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-brand-charcoal/60 to-transparent p-6">
+                <span className="font-display text-lg italic text-brand-ivory">
+                  "Modesty is my superpower."
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Craftsmanship */}
+      <section className="section-padding bg-brand-cream">
         <div className="section-container">
           <div className="max-w-3xl mx-auto text-center">
             <span className="text-caption mb-4 block">Our Craft</span>
             <h2 className="heading-section mb-8">The Art of Modest Fashion</h2>
             <p className="text-body mb-4">
-              At StyledByNazima, we believe that true luxury lies in the details. 
-              From the selection of premium fabrics to the intricate embroidery 
+              At StyledByNazima, we believe that true luxury lies in the details.
+              From the selection of premium fabrics to the intricate embroidery
               work, every element of our pieces is thoughtfully considered.
             </p>
             <p className="text-body mb-8">
-              Our artisans bring decades of experience to each garment, combining 
-              traditional craftsmanship with modern techniques to create pieces 
+              Our artisans bring decades of experience to each garment, combining
+              traditional craftsmanship with modern techniques to create pieces
               that are both timeless and contemporary.
             </p>
             <Link to="/shop" className="btn-hero">

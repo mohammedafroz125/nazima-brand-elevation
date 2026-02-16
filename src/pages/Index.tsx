@@ -7,8 +7,10 @@ import BrandValues from "@/components/home/BrandValues";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
 import AboutPreview from "@/components/home/AboutPreview";
 import Testimonials from "@/components/home/Testimonials";
+import CommunityGrid from "@/components/home/CommunityGrid";
 import CTASection from "@/components/home/CTASection";
 import SplashScreen from "@/components/ui/SplashScreen";
+import NewsletterPopup from "@/components/ui/NewsletterPopup";
 
 const Index = () => {
   const [showSplash, setShowSplash] = useState(() => {
@@ -30,8 +32,10 @@ const Index = () => {
         <BrandValues />
         <AboutPreview />
         <Testimonials />
+        <CommunityGrid />
         <CTASection />
       </Layout>
+      <NewsletterPopup />
     </>
   );
 };

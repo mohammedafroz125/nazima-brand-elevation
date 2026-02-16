@@ -12,6 +12,9 @@ import About from "./pages/About";
 import Reviews from "./pages/Reviews";
 import Contact from "./pages/Contact";
 import SizeGuide from "./pages/SizeGuide";
+import FabricCare from "./pages/FabricCare";
+import FAQ from "./pages/FAQ";
+import ReturnPolicy from "./pages/ReturnPolicy";
 import NotFound from "./pages/NotFound";
 import Checkout from "./pages/Checkout";
 import ThankYou from "./pages/ThankYou";
@@ -49,6 +52,9 @@ const App = () => (
             <Route path="/contact" element={<Contact />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/thank-you" element={<ThankYou />} />
+            <Route path="/fabric-care" element={<FabricCare />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/return-policy" element={<ReturnPolicy />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
