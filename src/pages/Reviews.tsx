@@ -2,12 +2,22 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Star } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 
+import lookbook1 from "@/assets/lookbook-1.jpg";
+import lookbook2 from "@/assets/lookbook-2.jpg";
+import lookbook3 from "@/assets/lookbook-3.jpg";
+import lookbookModest1 from "@/assets/lookbook-modest-1.jpg";
+import lookbookModest2 from "@/assets/lookbook-modest-2.jpg";
+import lookbookModest3 from "@/assets/lookbook-modest-3.jpg";
+import lookbookEditorial2 from "@/assets/lookbook-editorial-2.jpg";
+import lookbookEditorial3 from "@/assets/lookbook-editorial-3.jpg";
+
 interface Review {
   quote: string;
   author: string;
   location: string;
   rating: number;
   product?: string;
+  avatar: string;
 }
 
 const reviews: Review[] = [
@@ -18,6 +28,7 @@ const reviews: Review[] = [
     location: "Dubai, UAE",
     rating: 5,
     product: "Navy Embroidered Abaya",
+    avatar: lookbook1,
   },
   {
     quote:
@@ -26,6 +37,7 @@ const reviews: Review[] = [
     location: "Hyderabad, India",
     rating: 5,
     product: "Ivory Lace Abaya",
+    avatar: lookbook2,
   },
   {
     quote:
@@ -34,6 +46,7 @@ const reviews: Review[] = [
     location: "London, UK",
     rating: 5,
     product: "Blush Pearl Occasion Gown",
+    avatar: lookbook3,
   },
   {
     quote:
@@ -42,6 +55,7 @@ const reviews: Review[] = [
     location: "Toronto, Canada",
     rating: 5,
     product: "Champagne Silk Hijab",
+    avatar: lookbookModest1,
   },
   {
     quote:
@@ -50,6 +64,7 @@ const reviews: Review[] = [
     location: "Mumbai, India",
     rating: 5,
     product: "Sage Embroidered Dress",
+    avatar: lookbookModest2,
   },
   {
     quote:
@@ -58,6 +73,7 @@ const reviews: Review[] = [
     location: "New York, USA",
     rating: 5,
     product: "Burgundy Embroidered Kaftan",
+    avatar: lookbookModest3,
   },
   {
     quote:
@@ -65,6 +81,7 @@ const reviews: Review[] = [
     author: "Noor Fatima",
     location: "Jeddah, Saudi Arabia",
     rating: 5,
+    avatar: lookbookEditorial2,
   },
   {
     quote:
@@ -73,6 +90,7 @@ const reviews: Review[] = [
     location: "Melbourne, Australia",
     rating: 5,
     product: "Dusty Rose Maxi Dress",
+    avatar: lookbookEditorial3,
   },
 ];
 
@@ -119,11 +137,11 @@ const Reviews = () => {
 
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                   <div className="flex items-center gap-3">
-                    <div className="w-11 h-11 rounded-full bg-brand-gold/20 border border-brand-gold/30 flex items-center justify-center flex-shrink-0">
-                      <span className="font-display text-sm text-brand-gold font-medium">
-                        {review.author.split(" ").map(n => n[0]).join("")}
-                      </span>
-                    </div>
+                    <img
+                      src={review.avatar}
+                      alt={review.author}
+                      className="w-11 h-11 rounded-full object-cover object-top border border-brand-gold/30 flex-shrink-0"
+                    />
                     <div>
                       <cite className="text-sm font-body font-medium text-brand-charcoal not-italic block">
                         {review.author}

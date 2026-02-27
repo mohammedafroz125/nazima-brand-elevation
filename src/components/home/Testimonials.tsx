@@ -1,11 +1,16 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Star } from "lucide-react";
 
+import lookbook1 from "@/assets/lookbook-1.jpg";
+import lookbook2 from "@/assets/lookbook-2.jpg";
+import lookbook3 from "@/assets/lookbook-3.jpg";
+
 interface Testimonial {
   quote: string;
   author: string;
   location: string;
   rating: number;
+  avatar: string;
 }
 
 const testimonials: Testimonial[] = [
@@ -15,6 +20,7 @@ const testimonials: Testimonial[] = [
     author: "Salma Afreen",
     location: "Hyderabad, India",
     rating: 5,
+    avatar: lookbook1,
   },
   {
     quote:
@@ -22,6 +28,7 @@ const testimonials: Testimonial[] = [
     author: "Fatima Begum",
     location: "Dubai, UAE",
     rating: 5,
+    avatar: lookbook2,
   },
   {
     quote:
@@ -29,6 +36,7 @@ const testimonials: Testimonial[] = [
     author: "Afreen Khan",
     location: "London, UK",
     rating: 5,
+    avatar: lookbook3,
   },
 ];
 
@@ -63,11 +71,11 @@ const Testimonials = () => {
               </blockquote>
               
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-brand-gold/20 border border-brand-gold/30 flex items-center justify-center flex-shrink-0">
-                  <span className="font-display text-sm text-brand-gold font-medium">
-                    {testimonial.author.split(" ").map(n => n[0]).join("")}
-                  </span>
-                </div>
+                <img
+                  src={testimonial.avatar}
+                  alt={testimonial.author}
+                  className="w-11 h-11 rounded-full object-cover object-top border border-brand-gold/30 flex-shrink-0"
+                />
                 <div>
                   <cite className="text-sm font-body font-medium text-brand-charcoal not-italic block">
                     {testimonial.author}
