@@ -10,7 +10,7 @@ import lookbookModest3 from "@/assets/lookbook-modest-3.jpg";
 const communityImages = [
   { src: lookbook1, alt: "Customer styled in luxury abaya" },
   { src: lookbookModest1, alt: "Community member in modest wear" },
-  { src: lookbook2, alt: "Customer in prayer khimar" },
+  
   { src: lookbookModest2, alt: "Styled jilbab from our collection" },
   { src: lookbook3, alt: "Customer in occasion abaya" },
   { src: lookbookModest3, alt: "Community styling with hijab" },
