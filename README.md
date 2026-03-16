@@ -1,73 +1,62 @@
-# Welcome to your Lovable project
+# StyledByNazima – Fashion Brand Website
 
-## Project info
+A modern and elegant fashion brand website built to showcase premium modest fashion collections. The website focuses on clean design, responsive layouts, and a smooth browsing experience across devices.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Live Website
 
-## How can I edit this code?
+https://nazima-brand-elevation.vercel.app/
 
-There are several ways of editing your application.
+## About the Project
 
-**Use Lovable**
+StyledByNazima is a premium modest fashion brand website designed to present abaya collections in a visually appealing and user-friendly interface.
+The project demonstrates modern frontend development practices, responsive design, and polished UI components.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## Features
 
-Changes made via Lovable will be committed automatically to this repo.
+* Elegant fashion brand layout
+* Fully responsive design
+* Multi-page website structure
+* Lookbook and product showcase sections
+* Smooth navigation and clean UI
+* Optimized for performance
 
-**Use your preferred IDE**
+## Tech Stack
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+* HTML
+* CSS
+* JavaScript
+* React
+* Vite
+* Tailwind CSS
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Installation
 
-Follow these steps:
+To run the project locally:
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
+git clone https://github.com/yourusername/styledbynazima.git
+cd styledbynazima
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Deployment
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+The website is deployed using **Vercel**.
 
-**Use GitHub Codespaces**
+## Project Structure
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```
+src
+ ├── components
+ ├── assets
+ ├── pages
+ └── styles
+```
 
-## What technologies are used for this project?
+## Author
 
-This project is built with:
+Mohammed Afroz
+Frontend Developer
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+GitHub: https://github.com/mohammedafroz125
