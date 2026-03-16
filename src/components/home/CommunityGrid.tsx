@@ -1,7 +1,7 @@
 import { Instagram } from "lucide-react";
 
 import lookbook1 from "@/assets/lookbook-1.jpg";
-import lookbook2 from "@/assets/lookbook-2.jpg";
+
 import lookbook3 from "@/assets/lookbook-3.jpg";
 import lookbookModest1 from "@/assets/lookbook-modest-1.jpg";
 import lookbookModest2 from "@/assets/lookbook-modest-2.jpg";
