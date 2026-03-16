@@ -1,7 +1,7 @@
 import { Instagram } from "lucide-react";
 
 import lookbook1 from "@/assets/lookbook-1.jpg";
-import lookbook2 from "@/assets/lookbook-2.jpg";
+
 import lookbook3 from "@/assets/lookbook-3.jpg";
 import lookbookModest1 from "@/assets/lookbook-modest-1.jpg";
 import lookbookModest2 from "@/assets/lookbook-modest-2.jpg";
@@ -10,7 +10,7 @@ import lookbookModest3 from "@/assets/lookbook-modest-3.jpg";
 const communityImages = [
   { src: lookbook1, alt: "Customer styled in luxury abaya" },
   { src: lookbookModest1, alt: "Community member in modest wear" },
-  { src: lookbook2, alt: "Customer in prayer khimar" },
+  
   { src: lookbookModest2, alt: "Styled jilbab from our collection" },
   { src: lookbook3, alt: "Customer in occasion abaya" },
   { src: lookbookModest3, alt: "Community styling with hijab" },
