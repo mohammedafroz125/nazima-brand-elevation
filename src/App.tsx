@@ -19,6 +19,11 @@ import ReturnPolicy from "./pages/ReturnPolicy";
 import NotFound from "./pages/NotFound";
 import Checkout from "./pages/Checkout";
 import ThankYou from "./pages/ThankYou";
+import AdminDashboard from "./admin/pages/AdminDashboard";
+import AdminProducts from "./admin/pages/AdminProducts";
+import AdminLogin from "./admin/pages/AdminLogin";
+import AdminOrders from "./admin/pages/AdminOrders";
+import AdminUsers from "./admin/pages/AdminUsers";
 
 const queryClient = new QueryClient();
 
@@ -54,6 +59,11 @@ const App = () => (
             <Route path="/contact" element={<Contact />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/thank-you" element={<ThankYou />} />
+            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/admin/products" element={<AdminProducts />} />
+            <Route path="/admin/orders" element={<AdminOrders />} />
+            <Route path="/admin/users" element={<AdminUsers />} />
             <Route path="/fabric-care" element={<FabricCare />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/return-policy" element={<ReturnPolicy />} />
