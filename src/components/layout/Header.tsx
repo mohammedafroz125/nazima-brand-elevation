@@ -1,10 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X, Instagram, Phone } from "lucide-react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const [scrolled, setScrolled] = useState(false);
 
   const navLinks = [
     { path: "/", label: "Home" },
@@ -17,9 +18,21 @@ const Header = () => {
   ];
 
   const isActive = (path: string) => location.pathname === path;
+  const isHome = location.pathname === "/";
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [location.pathname]);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border/50">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 ${
+        isHome && !scrolled ? "bg-transparent" : "bg-background/95 backdrop-blur-sm border-b border-border/50"
+      } transition-colors duration-300`}
+    >
       <div className="section-container">
         <div className="flex items-center justify-between h-20 md:h-24">
           {/* Logo */}

@@ -68,9 +68,9 @@ const Contact = () => {
                       Store Address
                     </h3>
                     <p className="text-sm text-brand-warm-gray leading-relaxed">
-                      PATEL'S RESIDENCY, H NO.14-1-129/28/92A,
+                      PATEL'S RESIDENCY, H NO.xxx-xx-xx,
                       <br />
-                      SITE-3, BORABANDA, HYDERABAD, 500018
+                      BORABANDA, HYDERABAD, 500018
                     </p>
                   </div>
                 </div>

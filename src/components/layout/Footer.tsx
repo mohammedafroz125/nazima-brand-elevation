@@ -63,7 +63,7 @@ const Footer = () => {
               <div className="flex items-start gap-3">
                 <MapPin size={18} className="text-brand-gold mt-0.5 flex-shrink-0" />
                 <span className="text-sm text-brand-warm-gray">
-                  PATEL'S RESIDENCY, H NO.14-1-129/28/92A, SITE-3, BORABANDA,
+                  PATEL'S RESIDENCY, H NO.xxx-xx-xx, BORABANDA,
                   HYDERABAD, 500018
                 </span>
               </div>

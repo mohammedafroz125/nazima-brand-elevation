@@ -24,7 +24,7 @@ const Index = () => {
   return (
     <>
       {showSplash && <SplashScreen onComplete={handleSplashComplete} />}
-      <Layout>
+      <Layout overlapHeader>
         <HeroSlider />
         <TrustBadges />
         <CollectionsGrid />

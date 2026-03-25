@@ -18,6 +18,13 @@ interface Slide {
 
 const slides: Slide[] = [
   {
+    image: heroSlide3,
+    category: "Prayer Wear & Khimar",
+    title: "Serenity in Simplicity",
+    subtitle: "Pure and peaceful prayer wear for sacred moments",
+    link: "/shop?category=khimar",
+  },
+  {
     image: heroSlide1,
     category: "Luxury Abayas",
     title: "Grace in Every Layer",
@@ -30,13 +37,6 @@ const slides: Slide[] = [
     title: "Modest by Nature",
     subtitle: "Timeless jilbab sets in earth tones for everyday elegance",
     link: "/shop?category=jilbab",
-  },
-  {
-    image: heroSlide3,
-    category: "Prayer Wear & Khimar",
-    title: "Serenity in Simplicity",
-    subtitle: "Pure and peaceful prayer wear for sacred moments",
-    link: "/shop?category=khimar",
   },
   {
     image: heroSlide4,

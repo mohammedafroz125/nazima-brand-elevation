@@ -5,13 +5,14 @@ import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
 interface LayoutProps {
   children: ReactNode;
+  overlapHeader?: boolean;
 }
 
-const Layout = ({ children }: LayoutProps) => {
+const Layout = ({ children, overlapHeader = false }: LayoutProps) => {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      <main className="flex-1 pt-20 md:pt-24">{children}</main>
+      <main className={`flex-1 ${overlapHeader ? "pt-0" : "pt-20 md:pt-24"}`}>{children}</main>
       <Footer />
       <WhatsAppButton />
     </div>
