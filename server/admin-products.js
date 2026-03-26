@@ -3,25 +3,25 @@ import cors from "cors";
 
 const app = express();
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: "5mb" }));
 
 let products = [
-  { id: "1", name: "Champagne Embroidered Abaya", price: 8999, category: "Abayas", imageUrl: "/assets/product-abaya-1.jpg" },
-  { id: "2", name: "Ivory Lace Abaya", price: 7499, category: "Abayas", imageUrl: "/assets/product-abaya-2.jpg" },
-  { id: "3", name: "Olive Belted A-Line Abaya", price: 6999, category: "Abayas", imageUrl: "/assets/product-abaya-3.jpg" },
-  { id: "4", name: "Black Open Layered Abaya", price: 9499, category: "Abayas", imageUrl: "/assets/product-abaya-4.jpg" },
-  { id: "5", name: "Sage Embroidered Dress", price: 6999, category: "Modest Dresses", imageUrl: "/assets/product-dress-1.jpg" },
-  { id: "6", name: "Dusty Rose Maxi Dress", price: 5999, category: "Modest Dresses", imageUrl: "/assets/product-dress-2.jpg" },
-  { id: "7", name: "Blush Pearl Occasion Gown", price: 12999, category: "Occasion Wear", imageUrl: "/assets/product-occasion-1.jpg" },
-  { id: "8", name: "Burgundy Embroidered Kaftan", price: 14999, category: "Occasion Wear", imageUrl: "/assets/product-occasion-2.jpg" },
-  { id: "9", name: "Mocha Jilbab Set", price: 5499, category: "Jilbab & Makhna", imageUrl: "/assets/product-jilbab-1.jpg" },
-  { id: "10", name: "Olive Jilbab Makhna Set", price: 5999, category: "Jilbab & Makhna", imageUrl: "/assets/product-jilbab-2.jpg" },
-  { id: "11", name: "Ivory Lace Khimar", price: 3999, category: "Khimar & Prayer", imageUrl: "/assets/product-khimar-1.jpg" },
-  { id: "12", name: "Sage Prayer Gown", price: 4499, category: "Khimar & Prayer", imageUrl: "/assets/product-khimar-2.jpg" },
-  { id: "13", name: "Champagne Silk Hijab", price: 1499, category: "Hijabs & Scarves", imageUrl: "/assets/product-hijab-1.jpg" },
-  { id: "14", name: "Premium Hijab Collection", price: 2999, category: "Hijabs & Scarves", imageUrl: "/assets/collection-hijabs.jpg" },
-  { id: "15", name: "Premium Evening Dress", price: 8999, category: "Modest Dresses", imageUrl: "/assets/product-1.jpg" },
-  { id: "16", name: "Golden Occasion Dress", price: 11999, category: "Occasion Wear", imageUrl: "/assets/product-2.jpg" },
+  { id: "1", name: "Champagne Embroidered Abaya", price: 8999, category: "Abayas", imageUrl: "/assets/product-abaya-1.jpg", stock: 12 },
+  { id: "2", name: "Ivory Lace Abaya", price: 7499, category: "Abayas", imageUrl: "/assets/product-abaya-2.jpg", stock: 10 },
+  { id: "3", name: "Olive Belted A-Line Abaya", price: 6999, category: "Abayas", imageUrl: "/assets/product-abaya-3.jpg", stock: 8 },
+  { id: "4", name: "Black Open Layered Abaya", price: 9499, category: "Abayas", imageUrl: "/assets/product-abaya-4.jpg", stock: 6 },
+  { id: "5", name: "Sage Embroidered Dress", price: 6999, category: "Modest Dresses", imageUrl: "/assets/product-dress-1.jpg", stock: 15 },
+  { id: "6", name: "Dusty Rose Maxi Dress", price: 5999, category: "Modest Dresses", imageUrl: "/assets/product-dress-2.jpg", stock: 14 },
+  { id: "7", name: "Blush Pearl Occasion Gown", price: 12999, category: "Occasion Wear", imageUrl: "/assets/product-occasion-1.jpg", stock: 5 },
+  { id: "8", name: "Burgundy Embroidered Kaftan", price: 14999, category: "Occasion Wear", imageUrl: "/assets/product-occasion-2.jpg", stock: 4 },
+  { id: "9", name: "Mocha Jilbab Set", price: 5499, category: "Jilbab & Makhna", imageUrl: "/assets/product-jilbab-1.jpg", stock: 20 },
+  { id: "10", name: "Olive Jilbab Makhna Set", price: 5999, category: "Jilbab & Makhna", imageUrl: "/assets/product-jilbab-2.jpg", stock: 18 },
+  { id: "11", name: "Ivory Lace Khimar", price: 3999, category: "Khimar & Prayer", imageUrl: "/assets/product-khimar-1.jpg", stock: 25 },
+  { id: "12", name: "Sage Prayer Gown", price: 4499, category: "Khimar & Prayer", imageUrl: "/assets/product-khimar-2.jpg", stock: 22 },
+  { id: "13", name: "Champagne Silk Hijab", price: 1499, category: "Hijabs & Scarves", imageUrl: "/assets/product-hijab-1.jpg", stock: 50 },
+  { id: "14", name: "Premium Hijab Collection", price: 2999, category: "Hijabs & Scarves", imageUrl: "/assets/collection-hijabs.jpg", stock: 30 },
+  { id: "15", name: "Premium Evening Dress", price: 8999, category: "Modest Dresses", imageUrl: "/assets/product-1.jpg", stock: 12 },
+  { id: "16", name: "Golden Occasion Dress", price: 11999, category: "Occasion Wear", imageUrl: "/assets/product-2.jpg", stock: 10 },
 ];
 
 let orders = [
@@ -61,11 +61,18 @@ app.get("/api/products", (_req, res) => {
 });
 
 app.post("/api/products", (req, res) => {
-  const { id, name, price, category, imageUrl } = req.body || {};
+  const { id, name, price, category, imageUrl, stock } = req.body || {};
   if (!name || !category || !imageUrl || typeof price !== "number" || price <= 0) {
     return res.status(400).json({ error: "Invalid product data" });
   }
-  const product = { id: id || crypto.randomUUID(), name, price, category, imageUrl };
+  const product = {
+    id: id || crypto.randomUUID(),
+    name,
+    price,
+    category,
+    imageUrl,
+    stock: typeof stock === "number" && stock >= 0 ? stock : 0,
+  };
   products = [product, ...products];
   res.status(201).json(product);
 });

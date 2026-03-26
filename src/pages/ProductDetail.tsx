@@ -195,6 +195,7 @@ const ProductDetail = () => {
   const product = allProducts.find((p) => p.id === id);
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedSize, setSelectedSize] = useState("");
+  const [quantity, setQuantity] = useState(1);
 
   if (!product) {
     return (
@@ -210,7 +211,7 @@ const ProductDetail = () => {
   }
 
   const whatsappMessage = encodeURIComponent(
-    `Hi, I'm interested in ${product.name} (${product.price})${selectedSize ? `, Size: ${selectedSize}` : ""}. Is it available?`
+    `Hi, I'm interested in ${product.name} (${product.price})${selectedSize ? `, Size: ${selectedSize}` : ""}, Qty: ${quantity}. Is it available?`
   );
 
   return (
@@ -317,6 +318,37 @@ const ProductDetail = () => {
 
               {/* Model Height */}
               <p className="font-body text-xs text-brand-warm-gray mb-6 italic">{product.modelHeight}</p>
+
+              {/* Quantity */}
+              <div className="mb-6">
+                <h3 className="font-body text-sm uppercase tracking-wide text-brand-charcoal font-medium mb-2">
+                  Quantity
+                </h3>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                    className="px-3 py-2 border border-border hover:border-brand-charcoal transition"
+                    aria-label="Decrease quantity"
+                  >
+                    −
+                  </button>
+                  <input
+                    type="number"
+                    min={1}
+                    value={quantity}
+                    onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value || "1", 10)))}
+                    className="w-16 text-center border border-border py-2"
+                    aria-label="Quantity"
+                  />
+                  <button
+                    onClick={() => setQuantity((q) => q + 1)}
+                    className="px-3 py-2 border border-border hover:border-brand-charcoal transition"
+                    aria-label="Increase quantity"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
 
               {/* CTA */}
               <a

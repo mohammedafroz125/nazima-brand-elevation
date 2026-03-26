@@ -27,6 +27,7 @@ type Product = {
   price: number;
   category: string;
   imageUrl: string;
+  stock?: number;
 };
 
 const API = "http://localhost:5000/api/products";
@@ -40,6 +41,7 @@ const AdminProducts = () => {
     price: 0,
     category: "",
     imageUrl: "",
+    stock: 0,
   });
 
   useEffect(() => {
@@ -64,6 +66,7 @@ const AdminProducts = () => {
       price: 0,
       category: "",
       imageUrl: "",
+      stock: 0,
     });
 
   const imagePreview = useMemo(() => form.imageUrl, [form.imageUrl]);
@@ -87,6 +90,15 @@ const AdminProducts = () => {
     "/assets/product-3.jpg": genericProduct3,
     "/assets/product-4.jpg": genericProduct4,
     "/assets/product-5.jpg": genericProduct5,
+  };
+  const onFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      setForm((f) => ({ ...f, imageUrl: String(reader.result || "") }));
+    };
+    reader.readAsDataURL(file);
   };
 
   const onSubmit = async (e: React.FormEvent) => {
@@ -120,7 +132,7 @@ const AdminProducts = () => {
 
   const startEdit = (p: Product) => {
     setEditing(p);
-    setForm({ name: p.name, price: p.price, category: p.category, imageUrl: p.imageUrl });
+    setForm({ name: p.name, price: p.price, category: p.category, imageUrl: p.imageUrl, stock: p.stock ?? 0 });
   };
 
   const remove = async (id: string) => {
@@ -175,6 +187,18 @@ const AdminProducts = () => {
                 />
               </div>
             </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm mb-1">Stock</label>
+                <input
+                  type="number"
+                  min={0}
+                  className="w-full border border-border px-3 py-2"
+                  value={form.stock}
+                  onChange={(e) => setForm((f) => ({ ...f, stock: Number(e.target.value || 0) }))}
+                />
+              </div>
+            </div>
             <div>
               <label className="block text-sm mb-1">Image URL</label>
               <input
@@ -182,6 +206,15 @@ const AdminProducts = () => {
                 value={form.imageUrl}
                 onChange={(e) => setForm((f) => ({ ...f, imageUrl: e.target.value }))}
                 placeholder="/assets/product-abaya-1.jpg"
+              />
+            </div>
+            <div>
+              <label className="block text-sm mb-1">Upload Image</label>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={onFileSelect}
+                className="w-full border border-border px-3 py-2"
               />
             </div>
             {imagePreview && (
@@ -230,6 +263,7 @@ const AdminProducts = () => {
                     <th className="py-2 pr-4">Name</th>
                     <th className="py-2 pr-4">Price</th>
                     <th className="py-2 pr-4">Category</th>
+                    <th className="py-2 pr-4">Stock</th>
                     <th className="py-2 pr-4">Actions</th>
                   </tr>
                 </thead>
@@ -246,6 +280,7 @@ const AdminProducts = () => {
                       <td className="py-2 pr-4">{p.name}</td>
                       <td className="py-2 pr-4">₹{p.price.toLocaleString("en-IN")}</td>
                       <td className="py-2 pr-4">{p.category}</td>
+                      <td className="py-2 pr-4">{p.stock ?? 0}</td>
                       <td className="py-2 pr-4">
                         <div className="flex gap-2">
                           <button
