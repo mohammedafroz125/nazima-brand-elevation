@@ -53,7 +53,13 @@ const Checkout = () => {
       const createResp = await fetch("/api/create-order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ amount, currency: "INR" }),
+        body: JSON.stringify({ 
+          amount, 
+          currency: "INR",
+          customerName: name,
+          customerEmail: email,
+          productName: "StyledByNazima Fashion Item"
+        }),
       });
       const data = await createResp.json().catch(() => ({}));
       if (!createResp.ok) {

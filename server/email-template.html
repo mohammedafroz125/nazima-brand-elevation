@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f9f9f9;
+      }
+      .container {
+        max-width: 600px;
+        margin: 20px auto;
+        background-color: #ffffff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .header {
+        background: linear-gradient(135deg, #C8A96A 0%, #8B7355 100%);
+        color: #ffffff;
+        padding: 40px 20px;
+        text-align: center;
+      }
+      .header h1 {
+        margin: 0;
+        font-size: 28px;
+        font-weight: 600;
+        letter-spacing: 1px;
+      }
+      .content {
+        padding: 40px 30px;
+      }
+      .greeting {
+        font-size: 16px;
+        margin-bottom: 20px;
+        color: #333;
+      }
+      .section {
+        margin: 30px 0;
+        padding: 20px;
+        background-color: #f5f5f5;
+        border-left: 4px solid #C8A96A;
+        border-radius: 4px;
+      }
+      .section-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: #8B7355;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 15px;
+      }
+      .order-item {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 0;
+        padding: 8px 0;
+        border-bottom: 1px solid #e0e0e0;
+      }
+      .order-item:last-child {
+        border-bottom: none;
+      }
+      .item-name {
+        font-weight: 500;
+        color: #333;
+      }
+      .item-price {
+        font-weight: 600;
+        color: #C8A96A;
+      }
+      .total {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 2px solid #C8A96A;
+        font-size: 18px;
+        font-weight: 700;
+      }
+      .total-amount {
+        color: #C8A96A;
+      }
+      .info-row {
+        margin: 10px 0;
+        font-size: 14px;
+      }
+      .info-label {
+        font-weight: 600;
+        color: #555;
+        display: inline-block;
+        min-width: 100px;
+      }
+      .info-value {
+        color: #333;
+      }
+      .thank-you {
+        text-align: center;
+        padding: 30px 20px;
+        background-color: #f5f5f5;
+        border-radius: 4px;
+        margin: 30px 0;
+      }
+      .thank-you p {
+        font-size: 16px;
+        color: #333;
+        margin: 0 0 10px 0;
+      }
+      .thank-you-text {
+        font-size: 24px;
+        font-weight: 700;
+        color: #C8A96A;
+        letter-spacing: 0.5px;
+      }
+      .footer {
+        background-color: #f0f0f0;
+        padding: 30px;
+        text-align: center;
+        border-top: 1px solid #e0e0e0;
+      }
+      .footer-text {
+        font-size: 12px;
+        color: #666;
+        margin: 5px 0;
+      }
+      .social-links {
+        margin: 15px 0;
+      }
+      .social-links a {
+        display: inline-block;
+        margin: 0 10px;
+        color: #C8A96A;
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .divider {
+        height: 1px;
+        background-color: #e0e0e0;
+        margin: 20px 0;
+      }
+      .highlight {
+        background-color: #fff9f0;
+        padding: 15px;
+        border-radius: 4px;
+        margin: 15px 0;
+        border: 1px solid #E8D4C4;
+      }
+      .highlight-title {
+        font-weight: 600;
+        color: #8B7355;
+        margin-bottom: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <div class="header">
+        <h1>✨ STYLED BY NAZIMA ✨</h1>
+        <p style="margin: 10px 0 0 0; font-size: 14px; letter-spacing: 1px;">Premium Ethnic Wear</p>
+      </div>
+
+      <!-- Content -->
+      <div class="content">
+        <!-- Greeting -->
+        <div class="greeting">
+          <p>Dear {{customerName}},</p>
+          <p>Thank you for your purchase! We're delighted to have you as a valued customer of Styled by Nazima.</p>
+        </div>
+
+        <!-- Order Details -->
+        <div class="section">
+          <div class="section-title">📦 Order Summary</div>
+          <div class="order-item">
+            <span class="item-name">{{productName}}</span>
+            <span class="item-price">₹{{price}}</span>
+          </div>
+          <div class="total">
+            <span>Total Amount Paid:</span>
+            <span class="total-amount">₹{{totalAmount}}</span>
+          </div>
+        </div>
+
+        <!-- Payment Information -->
+        <div class="section">
+          <div class="section-title">💳 Payment Confirmation</div>
+          <div class="info-row">
+            <span class="info-label">Order ID:</span>
+            <span class="info-value">{{orderId}}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Payment ID:</span>
+            <span class="info-value">{{paymentId}}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Payment Status:</span>
+            <span class="info-value" style="color: #27ae60; font-weight: 600;">✓ Completed</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Date:</span>
+            <span class="info-value">{{paymentDate}}</span>
+          </div>
+        </div>
+
+        <!-- What's Next -->
+        <div class="highlight">
+          <div class="highlight-title">📋 What Happens Next?</div>
+          <ul style="margin: 0; padding-left: 20px; font-size: 13px; color: #555;">
+            <li>Your order has been confirmed and sent to our processing team.</li>
+            <li>You'll receive a shipping confirmation email within 24-48 hours.</li>
+            <li>Track your order using the tracking link provided in the shipping email.</li>
+          </ul>
+        </div>
+
+        <!-- Thank You -->
+        <div class="thank-you">
+          <p style="color: #8B7355; font-size: 18px; font-weight: 600; margin-bottom: 8px;">Your Order is Confirmed!</p>
+          <p class="thank-you-text">Thank You for Choosing Us!</p>
+          <p style="font-size: 13px; color: #666; margin-top: 10px;">We appreciate your trust and look forward to serving you again.</p>
+        </div>
+
+        <!-- Support Info -->
+        <div class="section">
+          <div class="section-title">💬 Need Help?</div>
+          <div class="info-row">
+            <span class="info-label">Email:</span>
+            <span class="info-value">support@styledbynazima.com</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Phone:</span>
+            <span class="info-value">+91-XXXXXXXXXX</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Hours:</span>
+            <span class="info-value">Mon-Fri, 10:00 AM - 6:00 PM IST</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <p class="footer-text"><strong>STYLED BY NAZIMA</strong></p>
+        <p class="footer-text">Premium Hyderabadi & Pakistani Ethnic Wear</p>
+        <div class="divider"></div>
+        <div class="social-links">
+          <a href="#">Instagram</a> | <a href="#">Facebook</a> | <a href="#">WhatsApp</a>
+        </div>
+        <p class="footer-text" style="margin-top: 15px; color: #999;">
+          © 2026 Styled by Nazima. All rights reserved.
+        </p>
+        <p class="footer-text" style="font-size: 11px; color: #bbb; margin-top: 10px;">
+          This is an automated email. Please do not reply directly to this email.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

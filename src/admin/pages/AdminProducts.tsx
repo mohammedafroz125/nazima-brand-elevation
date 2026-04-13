@@ -30,7 +30,7 @@ type Product = {
   stock?: number;
 };
 
-const API = "http://localhost:5000/api/products";
+const API = "http://localhost:3001/api/products";
 
 const AdminProducts = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -91,15 +91,7 @@ const AdminProducts = () => {
     "/assets/product-4.jpg": genericProduct4,
     "/assets/product-5.jpg": genericProduct5,
   };
-  const onFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = () => {
-      setForm((f) => ({ ...f, imageUrl: String(reader.result || "") }));
-    };
-    reader.readAsDataURL(file);
-  };
+
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -199,24 +191,24 @@ const AdminProducts = () => {
                 />
               </div>
             </div>
-            <div>
-              <label className="block text-sm mb-1">Image URL</label>
+            
+            <div className="border-t border-border pt-4 mt-4">
+              <label className="block text-sm font-body font-semibold mb-2 uppercase tracking-wide">Product Image Link</label>
+              <p className="text-xs text-brand-warm-gray mb-2">Paste image URL or local path</p>
               <input
-                className="w-full border border-border px-3 py-2"
+                type="text"
+                className="w-full border border-border px-3 py-2 mb-2"
                 value={form.imageUrl}
                 onChange={(e) => setForm((f) => ({ ...f, imageUrl: e.target.value }))}
-                placeholder="/assets/product-abaya-1.jpg"
+                placeholder="https://example.com/image.jpg or /assets/product-abaya-1.jpg"
               />
+              <div className="text-xs text-brand-warm-gray bg-gray-50 p-2 rounded mb-3">
+                <p className="font-semibold mb-1">Examples:</p>
+                <p>✓ External: https://cdn.example.com/product.jpg</p>
+                <p>✓ Local: /assets/product-abaya-1.jpg</p>
+              </div>
             </div>
-            <div>
-              <label className="block text-sm mb-1">Upload Image</label>
-              <input
-                type="file"
-                accept="image/*"
-                onChange={onFileSelect}
-                className="w-full border border-border px-3 py-2"
-              />
-            </div>
+
             {imagePreview && (
               <div className="mt-2">
                 <img
