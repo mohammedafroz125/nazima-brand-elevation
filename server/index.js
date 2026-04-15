@@ -7,6 +7,13 @@ import path from "path";
 import { fileURLToPath } from "url";
 import nodemailer from "nodemailer";
 import { getEmailTemplate, populateTemplate } from "./email-service.js";
+import connectDB from "./db.js";
+
+// Import routes
+import authRoutes from "./routes/auth.js";
+import productRoutes from "./routes/products.js";
+import cartRoutes from "./routes/cart.js";
+import orderRoutes from "./routes/orders.js";
 
 // Load env from multiple likely locations so startup works from root or /server cwd.
 const __filename = fileURLToPath(import.meta.url);
@@ -26,6 +33,17 @@ for (const envPath of envCandidates) {
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+// Connect to database
+const startServer = async () => {
+  try {
+    await connectDB();
+  } catch (err) {
+    console.error("Failed to connect to database, continuing with limited functionality...");
+  }
+};
+
+startServer();
 
 // Store orders in memory (in production, use database)
 const orders = {};
@@ -173,86 +191,21 @@ app.post("/verify-payment", express.json(), async (req, res) => {
   }
 });
 
-// Products API - In-memory storage
-const products = {};
+// ------ Database Routes (MongoDB) ------
+// Register new routes
+app.use("/api/auth", authRoutes);
+app.use("/api/products", productRoutes);
+app.use("/api/cart", cartRoutes);
+app.use("/api/orders", orderRoutes);
 
-// GET all products
-app.get("/api/products", (_req, res) => {
-  const productList = Object.values(products);
-  res.json(productList);
-});
-
-// POST - Add product
-app.post("/api/products", (req, res) => {
-  try {
-    const { name, price, category, imageUrl, stock, id } = req.body;
-    
-    if (!name || !category || !imageUrl || price <= 0) {
-      return res.status(400).json({ error: "Missing required fields" });
-    }
-    
-    const productId = id || `prod_${Date.now()}`;
-    const product = {
-      id: productId,
-      name,
-      price: Number(price),
-      category,
-      imageUrl,
-      stock: Number(stock) || 0,
-      createdAt: new Date().toISOString(),
-    };
-    
-    products[productId] = product;
-    res.status(201).json(product);
-  } catch (err) {
-    console.error("POST product error:", err);
-    res.status(500).json({ error: "Failed to add product" });
-  }
-});
-
-// PUT - Update product
-app.put("/api/products/:id", (req, res) => {
-  try {
-    const { id } = req.params;
-    if (!products[id]) {
-      return res.status(404).json({ error: "Product not found" });
-    }
-    
-    const { name, price, category, imageUrl, stock } = req.body;
-    products[id] = {
-      ...products[id],
-      name: name || products[id].name,
-      price: price ? Number(price) : products[id].price,
-      category: category || products[id].category,
-      imageUrl: imageUrl || products[id].imageUrl,
-      stock: stock !== undefined ? Number(stock) : products[id].stock,
-      updatedAt: new Date().toISOString(),
-    };
-    
-    res.json(products[id]);
-  } catch (err) {
-    console.error("PUT product error:", err);
-    res.status(500).json({ error: "Failed to update product" });
-  }
-});
-
-// DELETE - Remove product
-app.delete("/api/products/:id", (req, res) => {
-  try {
-    const { id } = req.params;
-    if (!products[id]) {
-      return res.status(404).json({ error: "Product not found" });
-    }
-    
-    delete products[id];
-    res.json({ success: true, message: "Product deleted" });
-  } catch (err) {
-    console.error("DELETE product error:", err);
-    res.status(500).json({ error: "Failed to delete product" });
-  }
+// Health check
+app.get("/health", (_req, res) => {
+  res.json({ status: "ok", service: "StyledByNazima backend", timestamp: new Date() });
 });
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
-  console.log(`Backend running on http://localhost:${PORT}`);
+  console.log(`✓ Backend running on http://localhost:${PORT}`);
+  console.log(`✓ Database: MongoDB${process.env.MONGODB_URI ? " (connected)" : " (disconnected)"}`);
+  console.log(`✓ Razorpay: ${process.env.RAZORPAY_KEY_ID ? "Configured" : "Not configured"}`);
 });
